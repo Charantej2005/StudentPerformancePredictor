@@ -1,11 +1,11 @@
-from load_data import load_student_data,display_student_info
+from load_data import load_students_data,display_data_info
 
 def main():
-  file_path="data/raw/student.csv"
-  students=load_student_data(file_path)
+  file_path="data/raw/students.csv"
+  students=load_students_data(file_path)
   if students is not None:
     printf("loaded student dataset sucessfully.")
-    display_student_info(stuydents)
+    display_data_info(students)
   else:
     print("Unable to load student dataset.")
 
