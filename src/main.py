@@ -17,6 +17,12 @@ from grading import(
     assign_grade,
     pass_fail_status
 )
+from ranking import (
+    generate_rank,
+    find_topper,
+    top_five_students,
+    bottom_five_students
+)
 
 def main():
     file_path = "data/raw/students.csv"
@@ -46,6 +52,15 @@ def main():
 
         print("\nUpdated Dataset:")
         print(students.head())
+
+        # Ranking the dataset
+        students = generate_rank(students)
+
+        find_topper(students)
+
+        top_five_students(students)
+    
+        bottom_five_students(students)
 
         # Display dataset information
         display_data_info(students)
