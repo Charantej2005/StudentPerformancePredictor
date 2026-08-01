@@ -11,7 +11,12 @@ from analysis import (
     missing_values,
     unique_value
 )
-
+from grading import(
+    calculate_total_marks,
+    calculate_average_marks,
+    assign_grade,
+    pass_fail_status
+)
 
 def main():
     file_path = "data/raw/students.csv"
@@ -32,6 +37,15 @@ def main():
         missing_values(students)
         unique_value(students)
         numerical_summary(students)
+
+        # Grading the dataset
+        students = calculate_total_marks(students)
+        students = calculate_average_marks(students)
+        students = assign_grade(students)
+        students = pass_fail_status(students)
+
+        print("\nUpdated Dataset:")
+        print(students.head())
 
         # Display dataset information
         display_data_info(students)
