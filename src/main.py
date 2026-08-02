@@ -1,3 +1,4 @@
+from utils import display_title, display_separator, check_file_exists
 from load_data import load_students_data, display_data_info
 from clean_data import (
     remove_duplicates,
@@ -33,24 +34,34 @@ from report import (
 def main():
     file_path = "data/raw/students.csv"
 
-    students = load_students_data(file_path)
+    if not check_file_exists(file_path):
+        return
 
+    students = load_students_data(file_path)
+    
     if students is not None:
+        display_title("Student Performance Predictor")
         print("Student dataset loaded successfully.")
 
         # Clean the dataset
+        display_separator()
+        print("Cleaning Dataset")
         students = remove_duplicates(students)
         check_missing_values(students)
         students = fill_missing_values(students)
         students = validate_marks(students)
 
         # Analyze the dataset
+        display_separator()
+        print("Dataset Analysis")
         dataset_analysis(students)
         missing_values(students)
         unique_value(students)
         numerical_summary(students)
 
         # Grading the dataset
+        display_separator()
+        print("Grading")
         students = calculate_total_marks(students)
         students = calculate_average_marks(students)
         students = assign_grade(students)
@@ -60,6 +71,8 @@ def main():
         print(students.head())
 
         # Ranking the dataset
+        display_separator()
+        print("Ranking")
         students = generate_rank(students)
 
         find_topper(students)
@@ -69,6 +82,8 @@ def main():
         bottom_five_students(students)
 
         # Report generation
+        display_separator()
+        print("Report Generation")
         students = generate_report(students)
         display_top_students(students)
         display_failed_students(students)
