@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 
 def generate_report(data):
@@ -13,7 +14,10 @@ def generate_report(data):
 def save_report(data):
     """Saves the student performance report as a CSV file."""
 
-    output_path = "outputs/reports/student_report.csv"
+    output_dir = "outputs/reports"
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_path = os.path.join(output_dir, "student_report.csv")
 
     data.to_csv(output_path, index=False)
 
