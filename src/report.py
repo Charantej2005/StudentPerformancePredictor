@@ -14,7 +14,7 @@ def generate_report(data):
 def save_report(data):
     """Saves the student performance report as a CSV file."""
 
-    output_dir = "outputs/reports"
+    output_dir = "output/reports"
     os.makedirs(output_dir, exist_ok=True)
 
     output_path = os.path.join(output_dir, "student_report.csv")
