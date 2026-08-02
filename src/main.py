@@ -23,6 +23,12 @@ from ranking import (
     top_five_students,
     bottom_five_students
 )
+from report import (
+    generate_report,
+    save_report,
+    display_top_students,
+    display_failed_students
+)
 
 def main():
     file_path = "data/raw/students.csv"
@@ -61,6 +67,12 @@ def main():
         top_five_students(students)
     
         bottom_five_students(students)
+
+        # Report generation
+        students = generate_report(students)
+        display_top_students(students)
+        display_failed_students(students)
+        save_report(students)
 
         # Display dataset information
         display_data_info(students)
